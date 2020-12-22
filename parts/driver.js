@@ -1,6 +1,6 @@
 'use strict';
 
-let pickup = require('./vendor');
+require('./vendor');
 let events = require('../events');
 
 
