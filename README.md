@@ -7,8 +7,8 @@
 ### Links and Resources
 -  Simon, Ricardo, Nathan
 
-- [GHActions](https://github.com/Mariko-401-AdvancedJs/auth-api/actions)
-- [PR](https://github.com/Mariko-401-AdvancedJs/auth-api/pulls?q=is%3Apr+is%3Aclosed)
+- [GHActions](https://github.com/Mariko-401-AdvancedJs/CAPS/actions)
+- [PR](https://github.com/Mariko-401-AdvancedJs/CAPS/pulls?q=is%3Apr+is%3Aclosed)
 
 
 ### Setup
@@ -25,4 +25,4 @@ run `node caps.js` in command line
 
 #### UML
 
-![uml](uml.png)
+![uml](lab11.png)
