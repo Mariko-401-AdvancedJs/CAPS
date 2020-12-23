@@ -1,24 +1,47 @@
 'use strict';
 
-const events = require('./events'); //access global event pool
+// const events = require('./events'); //access global event pool
+require('dotenv').config();
+
+const PORT = process.env.PORT;
+// const HOST = process.env.HOST;
+const IO = require('socket.io')(PORT);
+
 let timeStamp = new Date();
 
-require('./parts/driver');
-require('./parts/vendor');
+//GUTS
+const CAPS = IO.of('/caps');
+// const VENDORONLY = IO.of('./vendor');
+
+console.log('CAPS WORKING');
+
 //communicate with driver and vendor from CAPS system
 
-events.on('pickup-ready', (order) => {
-  events.emit('pickup', order);
-  console.log({ EVENT: { event: 'package ready for pickup', timeStamp, order } });
-});
+//PICKUP CAN GO TO ALL SOCKET CLIENTS
+IO.on('connection', (socket) => {
 
-events.on('in-transit', (order) => {
-  events.emit('delivering', order);
-  console.log({ EVENT: { event: 'package in transit', timeStamp, order } });
 })
 
-events.on('delivered', (order) => {
-  events.emit('just delivered', order);
-  console.log({ EVENT: { event: 'package delivered', timeStamp, order } });
-  console.log(`Thank you ${order.customerName}, your order ${order.orderID} has been delivered`);
+CAPS.on('connection', (socket) => {
+  console.log('CONNECTED TO VENDOR AND DRIVER');
+
+  socket.on('join', room => {
+    console.log(`joining ${room}`);
+    socket.join(room);
+  })
+
+  socket.on('pickup', (order) => {
+    console.log({ EVENT: { event: 'package ready for pickup', timeStamp, order } });
+    IO.emit('pickup-ready', order);
+  })
+  // only the right vendor should hear
+  socket.on('in-transit', (order) => {
+    CAPS.to(order.storeID).emit('otw', order);
+    console.log({ EVENT: { event: 'package in transit', timeStamp, order } });
+  })
+  // only the right vendor should hear
+  socket.on('success', (order) => {
+    CAPS.to(order.storeID).emit('thank-you', order);
+    console.log({ EVENT: { event: 'package delivered', timeStamp, order } });
+  })
 })
