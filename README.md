@@ -1,11 +1,11 @@
-# LAB - CLASS 11
+# LAB - CLASS 11 + 12
 
-## Project: Event Driven Application
+## Project: Event Driven Application & Socket.io
 
 ### Author: Mariko Alvarado
 
 ### Links and Resources
--  Simon, Ricardo, Nathan
+-  Simon, Ricardo, Nathan,Dina
 
 - [GHActions](https://github.com/Mariko-401-AdvancedJs/CAPS/actions)
 - [PR](https://github.com/Mariko-401-AdvancedJs/CAPS/pulls?q=is%3Apr+is%3Aclosed)
@@ -16,6 +16,8 @@
 #### How to initialize/run your application (where applicable)
 
 run `node caps.js` in command line
+run `node vendor.js` in command line
+run `node driver.js` in command line
 
 
 #### Tests
@@ -26,3 +28,5 @@ run `node caps.js` in command line
 #### UML
 
 ![uml](lab11.png)
+
+![uml](lab12.png)
