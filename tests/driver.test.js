@@ -1,6 +1,6 @@
 'use strict';
 
-const driver = require('../clients/driver');
+const driver = require('../clients/driver/driver');
 
 describe('logger middleware', () => {
   let consoleSpy;

@@ -1,19 +1,16 @@
 'use strict';
 require('dotenv').config();
-//connect to CAPS as client
 const IO = require('socket.io-client');
-const HOST = process.env.HOST;
-const CAPS = IO.connect(`${HOST}/caps`);
-const CONN = IO.connect(HOST);
+const CAPS = IO.connect(`${process.env.HOST}/caps`);
 
-CONN.on('pickup-ready', timer);
+CAPS.on('pickup-ready', timer);
 
-function timer() {
+function timer(order) {
   setTimeout(() => {
     CAPS.emit('in-transit', order);
   }, 1000);
   setTimeout(() => {
-    CAPS.emit('success', order);
+    CAPS.emit('delivered', order);
   }, 3000);
 };
 module.exports = timer;

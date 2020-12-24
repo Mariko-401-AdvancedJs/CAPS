@@ -27,6 +27,6 @@ run `node driver.js` in command line
 
 #### UML
 
-![uml](lab11.png)
+![uml](imgs/lab11.png)
 
-![uml](lab12.png)
+![uml](imgs/lab12.png)
