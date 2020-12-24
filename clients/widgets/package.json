@@ -1,11 +1,11 @@
 {
-  "name": "vendor",
+  "name": "widgets",
   "version": "1.0.0",
   "description": "",
-  "main": "vendor.js",
+  "main": "widgets.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "node vendor.js"
+    "start": "node widgets.js"
   },
   "keywords": [],
   "author": "",
